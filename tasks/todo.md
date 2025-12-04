@@ -1,99 +1,67 @@
-# Hand Sculpt - Piano di Sviluppo
+# 3D Particle System - Development Plan
 
-## Obiettivo
-Creare l'applicazione Hand Sculpt come descritto nel CLAUDE.md - un'app browser per creare forme geometriche usando i gesti delle mani.
+## Objective
+Create a real-time interactive 3D particle system using Three.js with dual-hand tracking. Particles respond to hand gestures (tension/closing) for scaling and expansion effects.
+
+## Requirements
+- Detect both hands through camera
+- Control particle scaling + expansion by hand tension & closing
+- Template panel: hearts / flowers / saturn / fireworks
+- Color selector for particle colors
+- Instant particle reaction to gesture changes
+- Simple, modern, clean UI
 
 ## Todo Items
 
-### Struttura Base
-- [x] Creare il file `hand-sculpt.html` con struttura HTML base
-- [x] Aggiungere loading overlay
-- [x] Aggiungere header con logo e status
+### Setup & Structure
+- [ ] Create `particle-system.html` with base structure
+- [ ] Add Three.js library for 3D rendering
+- [ ] Add MediaPipe Hands for dual-hand tracking
+- [ ] Set up responsive canvas with full viewport
 
-### Sistema Canvas
-- [x] Implementare canvas wrapper con video, hand canvas e draw canvas
-- [x] Configurare il mirroring del video per interazione naturale
+### 3D Particle System Core
+- [ ] Initialize Three.js scene, camera, renderer
+- [ ] Create ParticleSystem class with configurable templates
+- [ ] Implement particle buffer geometry for performance
+- [ ] Add particle animation loop
 
-### UI Panels
-- [x] Creare side panel per selezione forme (circle, rectangle, triangle, star, line)
-- [x] Creare side panel per selezione colori
-- [x] Creare instructions panel con guida ai gesti
-- [x] Aggiungere action buttons (undo, clear, save)
+### Particle Templates
+- [ ] Hearts template - heart-shaped particle distribution
+- [ ] Flowers template - petal/bloom pattern
+- [ ] Saturn template - ring orbital pattern
+- [ ] Fireworks template - explosion burst pattern
 
-### Stili CSS
-- [x] Definire CSS variables (colori neon, bg, glow effects)
-- [x] Implementare design system (Orbitron, Exo 2, glass-morphism)
-- [x] Aggiungere animazioni e effetti glow
+### Hand Tracking Integration
+- [ ] Configure MediaPipe for dual-hand (maxNumHands: 2)
+- [ ] Implement hand openness detection (finger distances)
+- [ ] Calculate hand tension (closed fist vs open palm)
+- [ ] Map hand state to particle scale/expansion
 
-### JavaScript - Core
-- [x] Implementare state management (shapes[], history[], etc.)
-- [x] Creare classe Shape con draw() e contains()
-- [x] Implementare tipi forma: circle, rectangle, triangle, star, line
+### Gesture-to-Particle Mapping
+- [ ] Closed hands → particles contract/shrink
+- [ ] Open hands → particles expand/grow
+- [ ] Hand movement → particles follow/react
+- [ ] Smooth interpolation for fluid response
 
-### JavaScript - MediaPipe
-- [x] Inizializzare MediaPipe Hands
-- [x] Configurare Camera Utils per webcam
-- [x] Implementare visualizzazione landmarks sulla hand canvas
+### UI Components
+- [ ] Template selector panel (4 options)
+- [ ] Color selector with preset colors
+- [ ] Hand tracking status indicator
+- [ ] Clean, minimal header/footer
 
-### JavaScript - Gesture Detection
-- [x] Implementare detectGesture() function
-- [x] Rilevamento Point (indice su) -> crea forma
-- [x] Rilevamento Pinch (pollice-indice) -> ridimensiona
-- [x] Rilevamento Open (mano aperta) -> trascina
-- [x] Rilevamento Peace (V) -> ruota
+### Styling
+- [ ] Modern dark theme with gradients
+- [ ] Glass-morphism panels
+- [ ] Smooth transitions and hover effects
+- [ ] Responsive design
 
-### JavaScript - UI Handlers
-- [x] Event handlers per selezione forme
-- [x] Event handlers per selezione colori
-- [x] Implementare undo, clear, save (download immagine)
-- [x] Gesture indicator visivo
-
-### Testing e Rifinitura
-- [x] Test funzionalita' completa
-- [x] Verificare performance
-- [x] Fix eventuali bug
+### Testing & Polish
+- [ ] Verify dual-hand tracking works
+- [ ] Test template switching
+- [ ] Ensure smooth particle response
+- [ ] Performance optimization
 
 ---
 
 ## Review
-
-### Riepilogo delle modifiche
-Creata l'applicazione completa `hand-sculpt.html` come file singolo contenente:
-
-**HTML:**
-- Loading overlay con animazione spinner
-- Header con logo "Hand Sculpt" e indicatore status webcam
-- Canvas wrapper con 3 layer: video (webcam), hand-canvas (landmarks), draw-canvas (forme)
-- Side panel sinistro per selezione forme (5 tipi con icone SVG)
-- Side panel destro per selezione colori (6 colori neon)
-- Instructions panel in basso con guida ai 4 gesti
-- Action buttons (Undo, Clear, Save)
-- Gesture indicator per mostrare il gesto corrente
-
-**CSS:**
-- Design system cyberpunk/neon con variabili CSS
-- Font Orbitron (headings) e Exo 2 (body)
-- Glass-morphism con backdrop-filter blur
-- Effetti glow neon su elementi interattivi
-- Animazioni (spinner, transizioni)
-- Layout responsive (pannelli nascosti < 1024px)
-
-**JavaScript:**
-- Classe `Shape` con supporto per 5 tipi: circle, rectangle, triangle, star, line
-- State management: shapes[], history[] (max 50), currentShape, currentColor
-- MediaPipe Hands integration con confidence 0.7
-- Visualizzazione landmarks con connessioni
-- Sistema gesture detection:
-  - Point: crea nuove forme / disegno libero
-  - Pinch: ridimensiona forme
-  - Open: trascina forme
-  - Peace: ruota forme
-- Undo con history stack
-- Save come PNG con background
-- Keyboard shortcut Ctrl+Z per undo
-
-### Note tecniche
-- Video mirrored con `scaleX(-1)` e coordinate invertite `(1 - landmark.x)`
-- Soglie gesture calibrate come da CLAUDE.md (pinch < 0.06, finger up > 0.05)
-- History limitato a 50 stati per performance
-- Canvas ridimensionati dinamicamente con window resize
+(To be completed after implementation)
