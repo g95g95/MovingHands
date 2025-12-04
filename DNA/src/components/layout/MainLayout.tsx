@@ -3,9 +3,13 @@ import { Scene } from '../canvas/Scene';
 import { HandTracker } from '../hand-tracking/HandTracker';
 import { GestureIndicator } from '../ui/GestureIndicator';
 import { ControlPanel } from '../ui/ControlPanel';
+import { useGestureProcessor } from '../../hooks/useGestureProcessor';
 
 export function MainLayout() {
   const [cameraReady, setCameraReady] = useState(false);
+
+  // Process hand gestures and apply to DNA state
+  useGestureProcessor();
 
   return (
     <div className="relative w-full h-full">
